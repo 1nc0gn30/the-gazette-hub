@@ -84,7 +84,3 @@ src/
 
 If you want permanent baseline content changes, edit `src/constants.ts` directly.
 
-## Notes
-
-- This project no longer depends on AI Studio-specific Vite config behavior.
-- `.env.example` exists for optional future integrations, but the current UI works without environment variables.

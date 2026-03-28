@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-classic: "Libre Baskerville", serif;
+  --color-accent-color: var(--accent-color);
+}
+
+:root {
+  --page-bg: #d1ccc0;
+  --paper-bg: #f4f1ea;
+  --paper-dark: #e8e4d9;
+  --ink-color: #1a1a1a;
+  --accent-color: #8b0000;
+  --nav-bg: #111111;
+  --nav-text: #ffffff;
+}
+
+/* Theme: Financial (WSJ Style) */
+[data-theme='financial'] {
+  --paper-bg: #fdf5e6; /* Slight pinkish/cream */
+  --ink-color: #1a1a1a;
+  --accent-color: #333333;
+}
+
+/* Theme: Tabloid (The Sun/Daily Mail Style) */
+[data-theme='tabloid'] {
+  --paper-bg: #ffffff;
+  --ink-color: #000000;
+  --accent-color: #ff0000;
+}
+
+/* Theme: Modern (The Guardian Style) */
+[data-theme='modern'] {
+  --paper-bg: #ffffff;
+  --ink-color: #000000;
+  --accent-color: #005689;
+}
+
+/* Theme: Minimalist */
+[data-theme='minimalist'] {
+  --paper-bg: #fafafa;
+  --ink-color: #222222;
+  --accent-color: #000000;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--ink-color);
+  font-family: var(--font-sans);
+  background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+  transition: background-color 0.5s ease;
+}
+
+
+/* The actual physical newspaper container */
+.newspaper-sheet {
+  background-color: var(--paper-bg);
+  background-image: 
+    url("https://www.transparenttextures.com/patterns/paper-fibers.png"),
+    radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.02) 100%);
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.1),
+    0 1px 3px rgba(0,0,0,0.2),
+    inset 0 0 100px rgba(0,0,0,0.02);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Subtle crinkle effect */
+.newspaper-sheet::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Center fold line */
+.newspaper-fold {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.newspaper-border {
+  border: 1px solid rgba(26, 26, 26, 0.15);
+}
+
+.column-text {
+  column-count: 1;
+}
+
+.column-text-1 {
+  column-count: 1;
+}
+
+@media (min-width: 768px) {
+  .column-text-2 {
+    column-count: 2;
+    column-gap: 2rem;
+    column-rule: 1px solid rgba(0,0,0,0.05);
+  }
+  .column-text-3 {
+    column-count: 3;
+    column-gap: 2rem;
+    column-rule: 1px solid rgba(0,0,0,0.05);
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Page turn animation classes */
+.page-exit {
+  transform-origin: left center;
+}
+
+.page-enter {
+  transform-origin: right center;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d1ccc0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a8a398;
+  border: 2px solid #d1ccc0;
+  border-radius: 5px;
+}
+
+/* Hide scrollbar for tabs */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
